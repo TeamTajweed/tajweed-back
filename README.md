@@ -1,2 +1,2 @@
 # Tajweed
-App designed to correct Quran recitation
+App designed to share audio files
