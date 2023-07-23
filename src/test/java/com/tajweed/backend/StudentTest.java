@@ -30,16 +30,16 @@ public class StudentTest {
     @Test
     @WithMockUser(value = "user")
     public void givenConnectedThenShouldReturnAllStudents() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Student(1L, "Fodil", "A")));
+        when(repository.findAll()).thenReturn(List.of(new Student("A", "Fodil", "A", 27)));
         this.mockMvc.perform(get("/students"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{'id': 1, 'name': 'Fodil', 'surname': 'A'}]"));
+                .andExpect(content().json("[{'id': 'A', 'name': 'Fodil', 'surname': 'A', 'age': 27}]", true));
     }
 
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Student(1L, "Fodil", "A")));
+        when(repository.findAll()).thenReturn(List.of(new Student("A", "Fodil", "A", 27)));
         this.mockMvc.perform(get("/students"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
