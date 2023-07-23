@@ -1,14 +1,12 @@
 package com.tajweed.backend.model;
 
-import jakarta.persistence.*;
 
-@Entity
+import org.springframework.data.annotation.Id;
+
 public class Student {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "student_generator")
-    @SequenceGenerator(name = "student_generator", allocationSize = 1)
-    private Long id;
+    private String id;
 
     private String name;
     private String surname;
@@ -16,7 +14,7 @@ public class Student {
     public Student() {
 
     }
-    public Student(Long id, String name, String surname){
+    public Student(String id, String name, String surname){
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -31,11 +29,11 @@ public class Student {
         this.name = name;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
