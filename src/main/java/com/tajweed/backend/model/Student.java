@@ -1,25 +1,25 @@
 package com.tajweed.backend.model;
 
-import jakarta.persistence.*;
 
-@Entity
+import org.springframework.data.annotation.Id;
+
 public class Student {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "student_generator")
-    @SequenceGenerator(name = "student_generator", allocationSize = 1)
-    private Long id;
+    private String id;
 
     private String name;
     private String surname;
 
-    public Student() {
+    private Integer age;
 
-    }
-    public Student(Long id, String name, String surname){
+    public Student() {}
+
+    public Student(String id, String name, String surname, Integer age){
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.age = age;
     }
 
     public String getName() {
@@ -31,11 +31,11 @@ public class Student {
         this.name = name;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,5 +45,13 @@ public class Student {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
