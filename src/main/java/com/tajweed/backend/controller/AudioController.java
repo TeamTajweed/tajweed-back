@@ -16,12 +16,10 @@ public class AudioController {
     @Autowired
     private AudioRepository repository;
 
-
-    @RequestMapping("/students")
+    @RequestMapping("/audio")
     public Iterable<Audio> getAudio() {
         logger.info("Get audio");
         return repository.findAll();
     }
-
 }
 

@@ -16,12 +16,10 @@ public class EntityController {
     @Autowired
     private EntityRepository repository;
 
-
     @RequestMapping("/entity")
     public Iterable<Entity> getEntity() {
         logger.info("Get entity");
         return repository.findAll();
     }
-
 }
 

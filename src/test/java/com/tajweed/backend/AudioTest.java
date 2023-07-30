@@ -19,27 +19,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(AudioController.class)
+
 public class AudioTest {
+
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private AudioRepository repository;
 
-
     @Test
     @WithMockUser(value = "user")
     public void givenConnectedThenShouldReturnAllAudio() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Audio("A", "duration", "idstudent", "idEntity" , "chapter", "verse")));
+        when(repository.findAll()).thenReturn(List.of(new Audio("A", "idstudent", "idEntity" , "chapter", "verse")));
         this.mockMvc.perform(get("/audio"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{'id': 'A', 'duration': 'duration', 'idStudent': 'idStudent', 'idEntity': 'idEntity' , 'chapter': 'chapter' , 'verse': 'verse'}]"));
+                .andExpect(content().json("[{'id': 'A', 'idStudent': 'idStudent', 'idEntity': 'idEntity' , 'chapter': 'chapter' , 'verse': 'verse'}]"));
     }
 
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Audio("A", "duration", "idStudent", "idEntity" , "chapter" , "verse")));
+        when(repository.findAll()).thenReturn(List.of(new Audio("A", "idStudent", "idEntity" , "chapter" , "verse")));
         this.mockMvc.perform(get("/audio"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());

@@ -8,6 +8,7 @@ public class Teacher {
     private String id;
 
     private String entity;
+
     private String name;
 
     private String password;
@@ -16,9 +17,8 @@ public class Teacher {
 
     private String resume;
 
-    public Teacher() {
+    public Teacher() {}
 
-    }
     public Teacher(String id, String entity, String name, String password, String email, String resume){
         this.id = id;
         this.entity = entity;

@@ -7,7 +7,6 @@ public class Audio {
     @Id
     private String id;
 
-    private String duration;
     private String idStudent;
 
     private String idEntity;
@@ -19,9 +18,8 @@ public class Audio {
     public Audio() {
 
     }
-    public Audio(String id, String duration, String idStudent, String idEntity, String chapter, String verse){
+    public Audio(String id, String idStudent, String idEntity, String chapter, String verse){
         this.id = id;
-        this.duration = duration;
         this.idStudent = idStudent;
         this.idEntity = idEntity;
         this.chapter = chapter;
@@ -32,13 +30,6 @@ public class Audio {
     }
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-    public void setDuration(String duration) {
-        this.duration = duration;
     }
 
     public String getIdStudent() {

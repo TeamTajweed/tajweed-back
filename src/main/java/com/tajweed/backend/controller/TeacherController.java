@@ -16,12 +16,10 @@ public class TeacherController {
     @Autowired
     private TeacherRepository repository;
 
-
     @RequestMapping("/teachers")
     public Iterable<Teacher> getTeachers() {
         logger.info("Get teacher");
         return repository.findAll();
     }
-
 }
 

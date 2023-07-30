@@ -20,12 +20,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(EntityController.class)
 public class EntityTest {
+
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private EntityRepository repository;
-
 
     @Test
     @WithMockUser(value = "user")
