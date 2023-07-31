@@ -2,30 +2,34 @@ package com.tajweed.backend.model;
 
 import org.springframework.data.annotation.Id;
 
-public class Student {
+public class Teacher {
 
     @Id
     private String id;
 
-    private String name;
+    private String entity;
 
-    private String progress;
+    private String name;
 
     private String password;
 
     private String email;
 
-    public Student() {}
+    private String resume;
 
-    public Student(String id, String progress, String name, String password,String email){
 
+    public Teacher() {
+
+    }
+
+    public Teacher(String id, String entity, String name, String password, String email, String resume){
         this.id = id;
-        this.progress = progress;
+        this.entity = entity;
         this.name = name;
         this.password = password;
         this.email = email;
+        this.resume = resume;
     }
-
     public String getId() {
         return id;
     }
@@ -33,11 +37,11 @@ public class Student {
         this.id = id;
     }
 
-    public String getProgress() {
-        return progress;
+    public String getEntity() {
+        return entity;
     }
-    public void setProgress(String progress) {
-        this.progress = progress;
+    public void setEntity(String entity) {
+        this.entity = entity;
     }
 
     public String getName() {
@@ -62,4 +66,10 @@ public class Student {
         this.email = email;
     }
 
+    public String getResume() {
+        return resume;
+    }
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
 }

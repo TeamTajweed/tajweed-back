@@ -1,8 +1,8 @@
 package com.tajweed.backend;
 
-import com.tajweed.backend.controller.StudentController;
-import com.tajweed.backend.dao.StudentRepository;
-import com.tajweed.backend.model.Student;
+import com.tajweed.backend.controller.TeacherController;
+import com.tajweed.backend.dao.TeacherRepository;
+import com.tajweed.backend.model.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,42 +18,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(StudentController.class)
-
-public class StudentTest {
-
+@WebMvcTest(TeacherController.class)
+public class TeacherTest {
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private StudentRepository repository;
+    private TeacherRepository repository;
 
 
     @Test
     @WithMockUser(value = "user")
-    public void givenConnectedThenShouldReturnAllStudents() throws Exception {
-
-        when(repository.findAll()).thenReturn(List.of(new Student("A", "En cours", "Fodil", "A" , "A")));
-        this.mockMvc.perform(get("/students"))
+    public void givenConnectedThenShouldReturnAllTeachers() throws Exception {
+        when(repository.findAll()).thenReturn(List.of(new Teacher("A", "Ent", "FodilTeacher", "A" , "A" , "A")));
+        this.mockMvc.perform(get("/teachers"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{'id': 'A', 'progress': 'En cours', 'name': 'Fodil', 'password': 'A' , 'email': 'A'}]"));
-
-
-        when(repository.findAll()).thenReturn(List.of(new Student("A", "En cours", "Fodil", "A" , "A")));
-        this.mockMvc.perform(get("/students"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().json("[{'id': 'A', 'progress': 'En cours', 'name': 'Fodil', 'password': 'A' , 'email': 'A'}]"));
-
+                .andExpect(content().json("[{'id': 'A', 'entity': 'Ent', 'name': 'FodilTeacher', 'password': 'A' , 'email': 'A' , 'resume': 'A'}]"));
     }
 
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
-
-        when(repository.findAll()).thenReturn(List.of(new Student("A", "En cours", "Fodil", "A" , "A")));
-
-        this.mockMvc.perform(get("/students"))
+        when(repository.findAll()).thenReturn(List.of(new Teacher("A", "Ent", "FodilTeacher", "A" , "A" , "A")));
+        this.mockMvc.perform(get("/teachers"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
     }
