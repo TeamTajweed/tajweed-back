@@ -27,6 +27,7 @@ public class EntityTest {
     @MockBean
     private EntityRepository repository;
 
+
     @Test
     @WithMockUser(value = "user")
     public void givenConnectedThenShouldReturnAllEntity() throws Exception {

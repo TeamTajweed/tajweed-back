@@ -5,13 +5,16 @@ import org.springframework.data.annotation.Id;
 public class Entity {
     @Id
     private String id;
+
+
     private Boolean isActive;
+    public Entity() {
 
-    public Entity() {}
-
-    public Entity(String id, Boolean isActive) {
+    }
+    public Entity(String id, Boolean isActive){
         this.id = id;
         this.isActive = isActive;
+
     }
     public String getId() {
         return id;

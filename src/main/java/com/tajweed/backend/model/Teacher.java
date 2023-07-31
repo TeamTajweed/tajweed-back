@@ -17,7 +17,10 @@ public class Teacher {
 
     private String resume;
 
-    public Teacher() {}
+
+    public Teacher() {
+
+    }
 
     public Teacher(String id, String entity, String name, String password, String email, String resume){
         this.id = id;

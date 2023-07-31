@@ -1,7 +1,5 @@
 package com.tajweed.backend.model;
 
-
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Student {
@@ -26,7 +24,6 @@ public class Student {
         this.name = name;
         this.password = password;
         this.email = email;
-
     }
 
     public String getId() {

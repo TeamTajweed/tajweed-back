@@ -32,16 +32,27 @@ public class StudentTest {
     @Test
     @WithMockUser(value = "user")
     public void givenConnectedThenShouldReturnAllStudents() throws Exception {
+
         when(repository.findAll()).thenReturn(List.of(new Student("A", "En cours", "Fodil", "A" , "A")));
         this.mockMvc.perform(get("/students"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{'id': 'A', 'progress': 'En cours', 'name': 'Fodil', 'password': 'A' , 'email': 'A'}]"));
+
+
+        when(repository.findAll()).thenReturn(List.of(new Student("A", "En cours", "Fodil", "A" , "A")));
+        this.mockMvc.perform(get("/students"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{'id': 'A', 'progress': 'En cours', 'name': 'Fodil', 'password': 'A' , 'email': 'A'}]"));
+
     }
 
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
+
         when(repository.findAll()).thenReturn(List.of(new Student("A", "En cours", "Fodil", "A" , "A")));
+
         this.mockMvc.perform(get("/students"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
