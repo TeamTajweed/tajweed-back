@@ -18,9 +18,10 @@ public class Student {
     public Student() {
     }
 
-    public Student(String id, String progress, String name, String password, String email) {
+    public Student(String id, String progress, User user) {
         this.id = id;
         this.progress = progress;
+        this.user = user;
     }
 
     public String getId() {
@@ -37,5 +38,13 @@ public class Student {
 
     public void setProgress(String progress) {
         this.progress = progress;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

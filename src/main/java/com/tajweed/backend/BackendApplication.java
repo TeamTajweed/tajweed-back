@@ -14,16 +14,10 @@ public class BackendApplication implements CommandLineRunner {
 
 	private static Logger LOG = LoggerFactory.getLogger(BackendApplication.class);
 
-	@Autowired
-	private StudentRepository StudentRepository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
-
-	@Autowired
-	private StudentRepository studentRepository;
 
 	@Override
 	public void run(String... args) {

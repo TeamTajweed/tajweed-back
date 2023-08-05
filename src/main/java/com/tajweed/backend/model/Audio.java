@@ -53,4 +53,20 @@ public class Audio {
     public void setVerse(String verse) {
         this.verse = verse;
     }
+
+    public Student getStudent() {
+        return Student;
+    }
+
+    public void setStudent(Student student) {
+        Student = student;
+    }
+
+    public String getIdEntity() {
+        return idEntity;
+    }
+
+    public void setIdEntity(String idEntity) {
+        this.idEntity = idEntity;
+    }
 }

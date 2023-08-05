@@ -4,6 +4,7 @@ import com.tajweed.backend.controller.AudioController;
 import com.tajweed.backend.dao.AudioRepository;
 import com.tajweed.backend.model.Audio;
 import com.tajweed.backend.model.Student;
+import com.tajweed.backend.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -35,10 +36,10 @@ public class AudioTest {
     @WithMockUser()
     public void givenConnectedThenShouldReturnAllAudio() throws Exception {
         when(repository.findAll()).thenReturn(List.of(new Audio("A", new Student(), "idEntity" , "baqarah", "180")));
-        this.mockMvc.perform(get("/audio"))
+        this.mockMvc.perform(get("/api/audios"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{'id': 'A', 'idStudent': 'idStudent', 'idEntity': 'idEntity' , 'chapter': 'baqarah' , 'verse': '180'}]"));
+                .andExpect(content().json("[{'id': 'A', 'student': null, 'idEntity': 'idEntity' , 'chapter': 'baqarah' , 'verse': '180'}]"));
 
     }
 
@@ -47,7 +48,7 @@ public class AudioTest {
 
         when(repository.findAll()).thenReturn(List.of(new Audio("A", new Student(), "idEntity" , "baqarah" , "180")));
 
-        this.mockMvc.perform(get("/audio"))
+        this.mockMvc.perform(get("/api/audios"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
     }
