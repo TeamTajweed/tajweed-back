@@ -1,6 +1,5 @@
 package com.tajweed.backend.model;
 
-import com.tajweed.backend.dao.StudentRepository;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 

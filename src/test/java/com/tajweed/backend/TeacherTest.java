@@ -30,7 +30,7 @@ public class TeacherTest {
     @Test
     @WithMockUser(value = "user")
     public void givenConnectedThenShouldReturnAllTeachers() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Teacher("A", "A teacher" )));
+        when(repository.findAll()).thenReturn(List.of(new Teacher("A", "A teacher")));
         this.mockMvc.perform(get("/api/teachers"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -39,7 +39,7 @@ public class TeacherTest {
 
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Teacher("A", "A teacher" )));
+        when(repository.findAll()).thenReturn(List.of(new Teacher("A", "A teacher")));
         this.mockMvc.perform(get("/api/teachers"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());

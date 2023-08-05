@@ -1,8 +1,5 @@
 package com.tajweed.backend.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.tajweed.backend.dao.UserRepository;
 import com.tajweed.backend.dto.LoginRequest;
 import com.tajweed.backend.dto.MessageResponse;
@@ -10,9 +7,9 @@ import com.tajweed.backend.dto.SignupRequest;
 import com.tajweed.backend.dto.UserInfoResponse;
 import com.tajweed.backend.model.User;
 import com.tajweed.backend.model.UserRole;
-import com.tajweed.backend.security.*;
+import com.tajweed.backend.security.JwtUtils;
+import com.tajweed.backend.security.UserDetailsImpl;
 import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -23,15 +20,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.tajweed.backend.model.UserRole.*;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

@@ -4,7 +4,6 @@ import com.tajweed.backend.controller.AudioController;
 import com.tajweed.backend.dao.AudioRepository;
 import com.tajweed.backend.model.Audio;
 import com.tajweed.backend.model.Student;
-import com.tajweed.backend.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -35,7 +34,7 @@ public class AudioTest {
     @Test
     @WithMockUser()
     public void givenConnectedThenShouldReturnAllAudio() throws Exception {
-        when(repository.findAll()).thenReturn(List.of(new Audio("A", new Student(), "idEntity" , "baqarah", "180")));
+        when(repository.findAll()).thenReturn(List.of(new Audio("A", new Student(), "idEntity", "baqarah", "180")));
         this.mockMvc.perform(get("/api/audios"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -46,7 +45,7 @@ public class AudioTest {
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
 
-        when(repository.findAll()).thenReturn(List.of(new Audio("A", new Student(), "idEntity" , "baqarah" , "180")));
+        when(repository.findAll()).thenReturn(List.of(new Audio("A", new Student(), "idEntity", "baqarah", "180")));
 
         this.mockMvc.perform(get("/api/audios"))
                 .andDo(print())
