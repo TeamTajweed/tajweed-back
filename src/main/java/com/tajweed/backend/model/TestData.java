@@ -16,6 +16,7 @@ public class TestData {
 
     @PostConstruct
     public void seedData() {
+
         //  Student data
         for (int i = 0; i < 50; i++) {
             Student student = new Student();
