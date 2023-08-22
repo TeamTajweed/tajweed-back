@@ -6,9 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestApi
 public class EntityController {
 
     public static Logger logger = LoggerFactory.getLogger(EntityController.class);
@@ -16,9 +15,9 @@ public class EntityController {
     @Autowired
     private EntityRepository repository;
 
-    @RequestMapping("/entity")
-    public Iterable<Entity> getEntity() {
-        logger.info("Get entity");
+    @RequestMapping("/entities")
+    public Iterable<Entity> getEntities() {
+        logger.info("Get entities");
         return repository.findAll();
     }
 }

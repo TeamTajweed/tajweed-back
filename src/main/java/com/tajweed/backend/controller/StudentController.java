@@ -5,10 +5,11 @@ import com.tajweed.backend.model.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@CrossOrigin(origins = "*")
-@RestController
+
+@RestApi
 public class StudentController {
 
     public static Logger logger = LoggerFactory.getLogger(StudentController.class);
@@ -17,8 +18,9 @@ public class StudentController {
     private StudentRepository repository;
 
     @GetMapping("/students")
+    @CrossOrigin
     public Iterable<Student> getStudents() {
-        logger.info("Get student");
+        logger.info("Get students");
         return repository.findAll();
 
     }

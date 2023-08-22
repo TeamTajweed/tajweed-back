@@ -32,7 +32,7 @@ public class EntityTest {
     @WithMockUser(value = "user")
     public void givenConnectedThenShouldReturnAllEntity() throws Exception {
         when(repository.findAll()).thenReturn(List.of(new Entity("A", true)));
-        this.mockMvc.perform(get("/entity"))
+        this.mockMvc.perform(get("/api/entities"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{'id': 'A', 'isActive': true}]"));
@@ -41,7 +41,7 @@ public class EntityTest {
     @Test
     public void givenNotConnectedThenShouldReturn401() throws Exception {
         when(repository.findAll()).thenReturn(List.of(new Entity("A", true)));
-        this.mockMvc.perform(get("/students"))
+        this.mockMvc.perform(get("/api/entities"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
     }
