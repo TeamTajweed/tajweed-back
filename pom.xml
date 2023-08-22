@@ -134,6 +134,12 @@
 				<spring.profiles.active>prod</spring.profiles.active>
 			</properties>
 		</profile>
+		<profile>
+			<id>populate</id>
+			<properties>
+				<spring.profiles.active>populate</spring.profiles.active>
+			</properties>
+		</profile>
 	</profiles>
 
 	<build>
