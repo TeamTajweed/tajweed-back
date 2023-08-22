@@ -19,9 +19,10 @@ public class Teacher {
 
     }
 
-    public Teacher(String id, String resume) {
+    public Teacher(String id, String resume, User user) {
         this.id = id;
         this.resume = resume;
+        this.user = user;
     }
 
     public String getId() {
@@ -38,5 +39,13 @@ public class Teacher {
 
     public void setResume(String resume) {
         this.resume = resume;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
